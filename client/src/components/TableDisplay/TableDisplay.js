@@ -6,7 +6,7 @@ const TableDisplay = () => {
     return (
         <TableContext.Consumer>
             {
-                ({sets, getTasks}) => (
+                ({sets}) => (
                     <>
                     <Table dark>
                         <thead>
@@ -18,7 +18,7 @@ const TableDisplay = () => {
 
                             </tr>
                         </thead>
-                        <tbody onLoad={getTasks}>
+                        <tbody>
                         {
                             sets.map( ({_id, type, quantity, weight}, i) =>
                             <tr key={_id}>
