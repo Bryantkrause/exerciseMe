@@ -1,5 +1,7 @@
 import React from 'react'
 import TableContext from '../../utils/TableContext'
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import {Table} from 'reactstrap'
 
 const TableDisplay = () => {
@@ -15,6 +17,8 @@ const TableDisplay = () => {
                                 <th><h4>type</h4></th>
                                 <th><h4>quantity</h4></th>
                                 <th><h4>weight</h4></th>
+                                <th><h4>update</h4></th>
+                                <th><h4>delete</h4></th>
 
                             </tr>
                         </thead>
@@ -26,6 +30,8 @@ const TableDisplay = () => {
                                 <td>{type}</td>
                                 <td>{quantity}</td>
                                 <td>{weight}</td>
+                                <td><EditIcon /></td>
+                                <td><DeleteIcon /></td>
 
                             </tr>
                             )
