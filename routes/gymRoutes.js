@@ -8,21 +8,17 @@ module.exports = app => {
             .catch(e => console.error(e))
     })
 
-    app.post('/gyms', (req, res) => {
-        Gym.create(req.body)
-        .then(({_id})=> {
-            Exercise.updatedOne({_id: req.body.})
-        })
-            .then(response => res.json(response))
-            .catch(e => console.error(e))
-    })
-
     app.get('/gyms', (req, res) => {
         Gym.find()
             .then(response => res.json(response))
             .catch(e => console.error(e))
     })
     // find an exercise by name
+    app.get('/gyms/:id', (req, res) => {
+        Gym.find({ type: req.params.id })
+            .then(response => res.json(response))
+            .catch(e => console.error(e))
+    })
     app.get('/gyms/:name', (req, res) => {
         Gym.findOne({ name: req.params.name })
         .populate('users')
@@ -38,7 +34,7 @@ module.exports = app => {
     })
 
     app.put('/gyms/:id', (req, res) => {
-        Gym.updatedOne({ _id: req.params.id }, { $set: req.body })
+        Gym.updateOne({ _id: req.params.id }, { $set: req.body })
             .then(response => res.json(response))
             .catch(e => console.error(e))
     })

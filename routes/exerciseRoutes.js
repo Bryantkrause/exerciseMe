@@ -13,12 +13,21 @@ module.exports = app => {
             .then(response => res.json(response))
             .catch(e => console.error(e))
     })
-    // find an exercise by name
-    app.get('/exercise/:name', (req, res) => {
+    // // find an exercise by name
+    app.get('/exercises/:name', (req, res) => {
         Exercise.findOne({ name: req.params.name })
             .then(response => res.json(response))
             .catch(e => console.error(e))
     })
+
+        // find an exercise by ID
+        app.get('/exercise/:id', (req, res) => {
+            console.log(req.body)
+            console.log(req.params.id)
+            Exercise.findOne({ _id: req.params.id })
+                .then(response => res.json(response))
+                .catch(e => console.error(e))
+        })
 
     app.delete('/exercise/:id', (req, res) => {
         Exercise.deleteOne({ _id: req.params.id }) //get the row of the task of the ID
@@ -27,7 +36,8 @@ module.exports = app => {
     })
 
     app.put('/exercise/:id', (req, res) => {
-        Exercise.updatedOne({ _id: req.params.id }, { $set: req.body })
+        console.log(req.body)
+        Exercise.updateOne({ _id: req.params.id }, { $set: req.body })
             .then(response => res.json(response))
             .catch(e => console.error(e))
     })
