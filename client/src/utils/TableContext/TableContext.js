@@ -5,6 +5,7 @@ const TableContext = React.createContext({
     quantity: '',
     weight: '',
     sets: [],
+    exercises: [],
     taskSubmit: () => {},
     inputChange: () => {},
     getTasks: () => {}

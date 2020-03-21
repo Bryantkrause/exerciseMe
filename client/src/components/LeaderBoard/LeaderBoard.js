@@ -4,11 +4,11 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import {Table} from 'reactstrap'
 
-const TableDisplay = () => {
+const LeaderBoard = () => {
     return (
         <TableContext.Consumer>
             {
-                ({sets}) => (
+                ({exercises}) => (
                     <>
                     <Table dark>
                         <thead>
@@ -24,7 +24,7 @@ const TableDisplay = () => {
                         </thead>
                         <tbody>
                         {
-                            sets.map( ({_id, type, quantity, weight}, i) =>
+                            exercises.map( ({_id, type, quantity, weight}, i) =>
                             <tr key={_id}>
                                 <td>{i+1}</td>
                                 <td>{type}</td>
@@ -45,4 +45,4 @@ const TableDisplay = () => {
     )
 }
 
-export default TableDisplay
+export default LeaderBoard
